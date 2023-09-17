@@ -1,6 +1,7 @@
 --
--- mysql> CREATE USER demo_user@'127.0.0.1' IDENTIFIED BY 'dem0Passw*rd'; -- 계정 생성
--- mysql> GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER ON demo_security.* TO demo_user@'127.0.0.1' WITH GRANT OPTION; -- 권한 생성
+-- mysql> CREATE USER demo_user@'172.19.0.1' IDENTIFIED BY 'dem0Passw*rd'; -- 계정 생성 (도커 접속 로컬아이피)
+-- mysql> CREATE USER demo_user@'localhost' IDENTIFIED BY 'dem0Passw*rd';  -- 계정 생성 (로컬 MySQL 접속시)
+-- mysql> GRANT SELECT, INSERT, UPDATE, DELETE ON demo_security.* TO demo_user@'172.19.0.1' WITH GRANT OPTION; -- 권한 생성
 -- mysql> GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER ON demo_security.* TO demo_user@'localhost' WITH GRANT OPTION;
 -- mysql> FLUSH PRIVILEGES;
 --
@@ -27,7 +28,7 @@ CREATE TABLE user (
     id varchar(50) NOT NULL COMMENT '아이디',
     name varchar(50) NOT NULL COMMENT '이름',
     password varchar(80) NOT NULL COMMENT '비밀번호',
-    authority varchar(100) NOT NULL COMMENT '권한',
+    authority varchar(100) NOT NULL DEFAULT 'ROLE_USER' COMMENT '권한',
     create_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '생성일시',
     PRIMARY KEY (seq)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='사용자';

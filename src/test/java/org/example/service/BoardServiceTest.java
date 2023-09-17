@@ -67,7 +67,7 @@ class BoardServiceTest {
 
         BoardRegRequest boardRegRequest = BoardRegRequest.builder()
                 .title("Dooly")
-                .regName("Go-Gil-dong")
+                .userId("Go-Gil-dong")
                 .content("baby dinosaur dooly")
                 .build();
 

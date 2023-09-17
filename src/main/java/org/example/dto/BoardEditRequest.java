@@ -1,7 +1,6 @@
 package org.example.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,5 +23,5 @@ public class BoardEditRequest {
 
     @ApiModelProperty("작성자")
     @NotEmpty(message = "Please enter your name")
-    private String regName;
+    private String userId;
 }

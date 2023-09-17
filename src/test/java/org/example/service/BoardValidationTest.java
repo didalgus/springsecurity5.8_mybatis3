@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.dto.BoardRegRequest;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
@@ -33,7 +32,7 @@ public class BoardValidationTest {
     void 빈문자열_전송_테스트() {
         BoardRegRequest boardRegRequest = BoardRegRequest.builder()
                 .title("")
-                .regName("")
+                .userId("")
                 .content("baby dinosaur dooly")
                 .build();
 

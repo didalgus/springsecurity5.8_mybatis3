@@ -1,10 +1,10 @@
-# Board
-
-email address : didalgus@gmail.com  
-repository : https://github.com/didalgus/board_springboot2.7_mysql  
-blog address : https://didalgus.github.io/  
 
 ## Introduction
+
+email address : didalgus@gmail.com  
+repository : https://github.com/didalgus/springsecurity5.8_mybatis3  
+blog address : https://didalgus.github.io/  
+
 [board_springboot2.7_mysql](https://github.com/didalgus/board_springboot2.7_mysql) 에 Spring Security 를 적용하였습니다.   
 회원 로그인, 게시판, 회원목록을 권한별(ROLE_ADMIN, ROLE_USER)로 확인 할 수 있습니다. 
 
@@ -165,4 +165,6 @@ IntelliJ IDEA 2023.2 버전 기준입니다.
 ## Bootstrap  
   
 Bootstrap 3.4 로 화면 구성하였습니다.   
-[https://getbootstrap.com/docs/3.4/components/](https://getbootstrap.com/docs/3.4/components/)
+[https://getbootstrap.com/docs/3.4/components/](https://getbootstrap.com/docs/3.4/components/)  
+[https://getbootstrap.com/docs/3.4/examples/theme/](https://getbootstrap.com/docs/3.4/examples/theme/)
+

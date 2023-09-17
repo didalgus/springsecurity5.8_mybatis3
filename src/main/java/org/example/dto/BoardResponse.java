@@ -33,8 +33,8 @@ public class BoardResponse {
     @ApiModelProperty("글 분류 : 사용자(User), Kafka(Kafka)")
     private RegType regType;
 
-    @ApiModelProperty("작성자")
-    private String regName;
+    @ApiModelProperty("사용자아이디")
+    private String userId;
 
     @ApiModelProperty("등록일시")
     private String regDt;
@@ -54,7 +54,7 @@ public class BoardResponse {
                 .title(boardEntity.getTitle())
                 .content(boardEntity.getContent())
                 .regType(boardEntity.getRegType())
-                .regName(boardEntity.getRegName())
+                .userId(boardEntity.getUserId())
                 .regDt(boardEntity.getRegDt().toLocalDateTime().format(EnvConstants.FORMATTER_YMD))
                 .build();
     }

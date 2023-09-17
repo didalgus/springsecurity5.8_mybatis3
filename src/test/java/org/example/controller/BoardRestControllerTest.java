@@ -92,7 +92,7 @@ class BoardRestControllerTest {
     private BoardRegRequest getBoardRegRequest() {
         return BoardRegRequest.builder()
                 .title("Dooly")
-                .regName("Go-Gil-dong")
+                .userId("Go-Gil-dong")
                 .content("baby dinosaur dooly")
                 .build();
     }

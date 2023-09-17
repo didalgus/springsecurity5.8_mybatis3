@@ -20,8 +20,8 @@ public class BoardRegRequest {
     @ApiModelProperty("글 분류 : 사용자(User), Kafka(Kafka)")
     private RegType regType;
 
-    @ApiModelProperty("작성자")
-    @NotEmpty(message = "Please enter your name")
-    private String regName;
+    @ApiModelProperty("사용자아이디")
+    @NotEmpty(message = "User ID is required")
+    private String userId;
 
 }

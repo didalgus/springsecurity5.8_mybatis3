@@ -1,0 +1,11 @@
+### 사용자 등록
+POST /api/user/create HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "userId" : "id{{$randomInt}}",
+  "userName" : "name{{$random.alphabetic(3)}}",
+  "userPassword" : "1234",
+  "userAuthority": "ROLE_ADMIN"
+}

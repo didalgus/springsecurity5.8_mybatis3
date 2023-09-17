@@ -1,11 +1,10 @@
 package org.example.controller;
 
-import org.example.dto.BoardResponse;
 import org.example.entity.BoardEntity;
+import org.example.entity.UserEntity;
 import org.example.service.BoardService;
+import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +21,13 @@ public class WebController {
     @Autowired
     private BoardService boardService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/")
     public String main() {
-        return "redirect:/board";
+        //return "redirect:/board";
+        return "/main";
     }
 
     @GetMapping("/board")
@@ -42,7 +45,6 @@ public class WebController {
         return "boardDetail";
     }
 
-
     @GetMapping("/board/form")
     public String boardForm(Model model, @RequestParam(value = "seq", required = false) Long boardSeq) {
 
@@ -55,4 +57,30 @@ public class WebController {
         return "boardForm";
     }
 
+    @GetMapping("/users")
+    public String users(Model model) {
+        List<UserEntity> users = userService.findAll();
+        model.addAttribute("users", users);
+        return "user";
+    }
+
+    @GetMapping("/sign-in")
+    public String signIn() {
+        return "sign-in";
+    }
+
+    @GetMapping("/sign-out")
+    public String signOut() {
+        return "sign-out";
+    }
+
+    @GetMapping("/sign-up")
+    public String signUp() {
+        return "/sign-up";
+    }
+
+    @GetMapping("/error/403")
+    public String error403() {
+        return "error403";
+    }
 }

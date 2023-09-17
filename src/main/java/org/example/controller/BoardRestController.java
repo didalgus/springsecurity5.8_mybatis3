@@ -43,6 +43,7 @@ public class BoardRestController {
     @PostMapping("/board/write")
     @ResponseStatus(value = HttpStatus.OK)
     public void write(@RequestBody @Valid BoardRegRequest boardRegRequest) {
+        
         boardService.save(boardRegRequest);         // Sample - @ResponseStatus
     }
 
