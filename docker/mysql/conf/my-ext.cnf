@@ -1,0 +1,5 @@
+[mysqld]
+general_log = 1
+slow_query_log = 1
+explicit_defaults_for_timestamp = 1
+innodb_use_native_aio = 0

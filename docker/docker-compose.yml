@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  django-db:
+    image: mysql:5.7
+    container_name: mysql_5_7
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: demo_user
+      MYSQL_PASSWORD: dem0Passw*rd
+      TZ: Asia/Seoul
+    volumes:
+      - ./init/:/docker-entrypoint-initdb.d/
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./sql:/sql
+    platform: linux/amd64
+    restart: always
