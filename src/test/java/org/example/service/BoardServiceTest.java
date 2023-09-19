@@ -28,7 +28,7 @@ class BoardServiceTest {
 
         log.info("boardEntity1.getTitle() : {}", boardEntity1.getTitle());
         log.info("boardEntity2.getContent() : {}", boardEntity2.getContent());
-        log.info("boardEntity2.getRegDt() : {}", boardEntity2.getRegDt().format(EnvConstants.FORMATTER));
+        log.info("boardEntity2.getRegDt() : {}", boardEntity2.getRegDt().toString());
 
         assertAll(
                 () -> assertEquals("YOTSUBA&!", boardEntity1.getTitle()),

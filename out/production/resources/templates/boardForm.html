@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Board Form</title>
+</head>
+<body>
+<th:block th:include="fragments/block-heading"/>
+<div class="container">
+    <h1>Board Write</h1>
+    <form id="boardForm" th:object="${board}">
+        <input type="hidden" th:field="*{seq}">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <td>작성자</td>
+                <td>
+                    <span sec:authentication="principal.username"/> <span sec:authentication="principal.authorities"/>
+
+                    <sec:authorize access="isAuthenticated()">
+                        <input type="hidden" name="userid" th:value="${#authentication.getName()}">
+                    </sec:authorize>
+                </td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td><input th:field="*{title}" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td><textarea th:field="*{content}" class="form-control" rows="3"></textarea></td>
+            </tr>
+        </table>
+        <div>
+            <input class="btn btn-primary" type="submit" th:value="Submit">
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
+
+<script>
+    // 폼이 제출되면 이벤트 핸들러 실행
+    $('#boardForm').submit(function (event) {
+        // 폼의 기본 제출 동작을 막습니다.
+        event.preventDefault();
+
+        var boardSeq = $('input[name="seq"]').val();
+
+        var url = '/api/board/write';
+        var type = 'POST';
+
+        if (boardSeq > 0) {
+            url = '/api/board/' + boardSeq;
+            type = 'PUT';
+        }
+
+        var formData = {
+            userId: $('input[name="userid"]').val(),
+            title: $('input[name="title"]').val(),
+            content: $('textarea[name="content"]').val()
+        };
+
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        var jsonData = JSON.stringify(formData);
+        console.log(formData);
+
+        // AJAX 요청을 보냅니다.
+        $.ajax({
+            type: type,         // HTTP 요청 방식 (POST)
+            url: url, // 서버 URL (폼이 전송될 곳)
+            contentType: 'application/json',
+            //dataType: 'json',
+            data: jsonData,       // 폼 데이터
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            success: function (response) {
+                // 성공적으로 요청을 처리한 후 할 작업을 수행합니다.
+                console.log("success : " + response);
+                location.replace("/");
+            },
+            error: function (xhr, status, error) {
+                // 요청 중에 오류가 발생한 경우 처리할 작업을 수행합니다.
+                console.error(xhr.responseText);
+            }
+        });
+    });
+</script>

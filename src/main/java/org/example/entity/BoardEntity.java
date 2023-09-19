@@ -18,6 +18,6 @@ public class BoardEntity {
     private String content;
     private RegType regType;
     private String userId;
-    private Timestamp regDt;
+    private Long regDt;
 
 }

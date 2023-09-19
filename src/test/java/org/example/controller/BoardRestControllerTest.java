@@ -13,7 +13,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -100,11 +99,11 @@ class BoardRestControllerTest {
     private BoardEntity getBoardEntity() {
         return BoardEntity.builder()
                 .seq(2L)
-                .regName("Go-gil-dong")
+                .userId("Go-gil-dong")
                 .title("Dooly")
                 .content("baby dinosaur dooly")
                 .regType(RegType.User)
-                .regDt(LocalDateTime.now())
+                .regDt(System.currentTimeMillis())
                 .build();
     }
 

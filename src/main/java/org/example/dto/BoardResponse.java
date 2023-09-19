@@ -10,6 +10,7 @@ import org.example.constants.EnvConstants;
 import org.example.entity.BoardEntity;
 import org.example.enums.RegType;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +56,7 @@ public class BoardResponse {
                 .content(boardEntity.getContent())
                 .regType(boardEntity.getRegType())
                 .userId(boardEntity.getUserId())
-                .regDt(boardEntity.getRegDt().toLocalDateTime().format(EnvConstants.FORMATTER_YMD))
+                .regDt(new Timestamp(boardEntity.getRegDt()).toString())
                 .build();
     }
 }

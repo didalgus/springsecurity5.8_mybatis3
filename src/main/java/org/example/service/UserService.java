@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Service
 public class UserService {
 
-    private final UserMapper userMapper;
+    private UserMapper userMapper;
+
+    public UserService(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     public UserEntity signIn(SignInRequest signInRequest) {
         return userMapper.findByUser(signInRequest);
