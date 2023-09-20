@@ -3,9 +3,6 @@ package org.example.entity;
 import lombok.*;
 import org.example.enums.RegType;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @Builder

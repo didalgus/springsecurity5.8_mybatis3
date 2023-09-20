@@ -1,25 +1,25 @@
 package org.example.config;
 
+import org.example.handler.CsrfRequireMatcher;
 import org.example.handler.CustomLoginFailureHandler;
 import org.example.handler.CustomLoginSuccessHandler;
 import org.example.service.CustomUserDetailsService;
 import org.example.service.SimplePasswordEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
 
-@Profile("prod")
 @Configuration
 @EnableWebSecurity(debug = false)
 @EnableMethodSecurity
-public class SecurityConfigProd {
+public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -38,7 +38,10 @@ public class SecurityConfigProd {
                 .cacheControl().disable()
                 .xssProtection().headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK);
 
-        http.csrf();
+        // Cross Site Request Fogery: 사이트간 요청 위조
+        http.csrf()
+                .requireCsrfProtectionMatcher(new CsrfRequireMatcher())
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
         http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true);
 
