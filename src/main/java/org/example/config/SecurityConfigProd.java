@@ -38,7 +38,7 @@ public class SecurityConfigProd {
                 .cacheControl().disable()
                 .xssProtection().headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK);
 
-        http.csrf();      // Post 전송시 csrf 항목 추가해주지 않는경우 disable()  해줘야 함. http.csrf().disable();
+        http.csrf();
 
         http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true);
 

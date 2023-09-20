@@ -1,6 +1,7 @@
 package org.example.config;
 
 
+import org.example.handler.CsrfRequireMatcher;
 import org.example.handler.CustomLoginFailureHandler;
 import org.example.handler.CustomLoginSuccessHandler;
 import org.example.service.CustomUserDetailsService;
@@ -14,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
 
 @Profile("dev")
@@ -39,11 +41,15 @@ public class SecurityConfigDev {
                 .cacheControl().disable()
                 .xssProtection().headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK);
 
-        //http.csrf();      // Post 전송시 csrf 항목 추가해주지 않는경우 disable()  해줘야 함. http.csrf().disable();
         // Cross Site Request Fogery: 사이트간 요청 위조
-        http.csrf().disable();
+        http.csrf()
+                .requireCsrfProtectionMatcher(new CsrfRequireMatcher())
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
-        http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true);
+        http.sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true);
+
 
         http.formLogin()
                 .loginPage("/sign-in")

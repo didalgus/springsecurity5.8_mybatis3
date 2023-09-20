@@ -85,7 +85,7 @@ $ mysql_secure_installation
 
 root 계정으로 로그인 후 데모계정을 생성하여 접속합니다.
 ```bash
-$ mysql -u demo -h 127.0.0.1 -p'dem0Passw*rd' demo
+$ mysql -u demo_user -h 127.0.0.1 -p'dem0Passw*rd' demo_security
 ```
 
 서버를 종료합니다. 

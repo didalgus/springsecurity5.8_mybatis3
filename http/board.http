@@ -17,7 +17,7 @@ Content-Type: application/json
   "title" : "title{{$randomInt}}",
   "content" : "{{$random.alphanumeric(10)}}",
   "regType" : "User",
-  "regName" : "name{{$randomInt}}"
+  "userId" : "id{{$randomInt}}"
 }
 
 ### 게시물 수정

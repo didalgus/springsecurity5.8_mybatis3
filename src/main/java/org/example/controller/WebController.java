@@ -27,7 +27,7 @@ public class WebController {
     @GetMapping("/")
     public String main() {
         //return "redirect:/board";
-        return "/main";
+        return "main";
     }
 
     @GetMapping("/board")

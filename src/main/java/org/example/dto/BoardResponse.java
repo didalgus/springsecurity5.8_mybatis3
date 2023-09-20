@@ -34,7 +34,7 @@ public class BoardResponse {
     @ApiModelProperty("글 분류 : 사용자(User), Kafka(Kafka)")
     private RegType regType;
 
-    @ApiModelProperty("사용자아이디")
+    @ApiModelProperty("사용자 아이디")
     private String userId;
 
     @ApiModelProperty("등록일시")

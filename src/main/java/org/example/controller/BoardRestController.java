@@ -60,6 +60,7 @@ public class BoardRestController {
         }
     }
 
+    @ApiOperation("게시물 삭제")
     @DeleteMapping("/board/{boardSeq}")
     public ResponseEntity delete(@PathVariable @Valid @NotNull Long boardSeq) {
         return new ResponseEntity(boardService.delete(boardSeq), HttpStatus.OK);

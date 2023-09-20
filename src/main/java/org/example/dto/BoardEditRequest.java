@@ -1,14 +1,18 @@
 package org.example.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
 
 
-@Setter
+@Builder
 @Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@ApiModel("게시물 수")
 public class BoardEditRequest {
 
     private long seq;
@@ -21,7 +25,7 @@ public class BoardEditRequest {
     @NotEmpty(message = "Please enter your content")
     private String content;
 
-    @ApiModelProperty("작성자")
+    @ApiModelProperty("사용자 아이디")
     @NotEmpty(message = "Please enter your name")
     private String userId;
 }

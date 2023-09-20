@@ -1,5 +1,6 @@
 package org.example.dto;
-import lombok.Builder;
+import io.swagger.annotations.ApiModel;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -7,6 +8,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Builder
+@Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@ApiModel("사용자 가입 항목")
 public class SignUpRequest {
 
     @NotNull(message = "User Id : Please enter your id")
