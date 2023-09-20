@@ -6,10 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.constants.EnvConstants;
 import org.example.entity.BoardEntity;
 import org.example.enums.RegType;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +58,7 @@ public class BoardResponse {
                 .content(boardEntity.getContent())
                 .regType(boardEntity.getRegType())
                 .userId(boardEntity.getUserId())
-                .regDt(new Timestamp(boardEntity.getRegDt()).toString())
+                .regDt(boardEntity.getRegDt().toString())
                 .build();
     }
 }

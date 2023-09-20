@@ -3,6 +3,8 @@ package org.example.entity;
 import lombok.*;
 import org.example.enums.RegType;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Builder
@@ -15,6 +17,6 @@ public class BoardEntity {
     private String content;
     private RegType regType;
     private String userId;
-    private Long regDt;
+    private LocalDateTime regDt;
 
 }

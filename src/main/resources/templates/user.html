@@ -33,11 +33,11 @@
         <tbody>
             <tr th:each="user, idx: ${users}">
                 <td th:text="${idx.index}"></td>
-                <td th:text="${user.getId}"></td>
-                <td th:text="${user.getName}"></td>
-                <td th:text="${user.getPassword}"></td>
-                <td th:text="${user.getAuthority}"></td>
-                <td th:text="${user.getCreate_at}"></td>
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.authority}"></td>
+                <td th:text="${user.createAt}"></td>
             </tr>
         </tbody>
     </table>

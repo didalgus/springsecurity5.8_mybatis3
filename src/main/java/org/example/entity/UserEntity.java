@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,6 +18,6 @@ public class UserEntity {
     @JsonIgnore
     private String password;
     private String authority;
-    private Timestamp create_at;
+    private LocalDateTime createAt;
 
 }
